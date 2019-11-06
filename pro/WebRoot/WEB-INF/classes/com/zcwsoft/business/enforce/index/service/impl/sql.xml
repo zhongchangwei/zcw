@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+
+
+<!-- 首页菜单 -->
+<indexTree>
+<![CDATA[
+	select 
+		   id as pk,
+		   parentid as pid,
+		   name_ as text, 
+		   url_ as url
+	from t_code_info 
+		where state = 1 and id != '4028282d5875550a01587557b5040001'
+		start with id in('4028282d5875550a01587557b5040001')
+		connect by nocycle prior id = parentid
+	order by sort
+]]>
+</indexTree>
+
+
+
+</root>

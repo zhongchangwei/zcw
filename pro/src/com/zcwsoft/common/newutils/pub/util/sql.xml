@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+
+<!-- 查询-->
+<selectData>
+<![CDATA[
+
+select * from t_pub_genderserialnoauto where type= ?
+
+]]>
+</selectData>
+
+<!-- 更新-->
+<updateData>
+<![CDATA[
+
+update t_pub_genderserialnoauto set newnumber = ?
+
+]]>
+</updateData>
+
+<!-- 根据表获取索引名称等信息-->
+<getTableIndexs>
+<![CDATA[
+
+select i.index_name,
+       i.index_type,
+       i.table_owner,
+       i.table_name,
+       i.uniqueness,
+       i.tablespace_name,
+       replace(wm_concat(c.column_name),',',?) as column_name
+from user_indexes i, user_ind_columns c
+where i.index_name = c.index_name
+and i.table_name = ?
+group by i.index_name,
+       i.index_type,
+       i.table_owner,
+       i.table_name,
+       i.uniqueness,
+       i.tablespace_name
+]]>
+</getTableIndexs>
+
+
+<!-- 根据表明获取所有字段、长度、顺序、类型-->
+<getFieldNameBytableName>
+<![CDATA[
+
+	select 
+		table_name	,
+		column_name	, 
+		data_type	, 	
+		data_length	, 
+		column_id
+	from SYS.USER_TAB_COLUMNS t
+	where table_name = ?
+
+]]>
+</getFieldNameBytableName>
+
+</root>

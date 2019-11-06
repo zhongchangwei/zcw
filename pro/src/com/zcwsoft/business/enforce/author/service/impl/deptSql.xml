@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+
+
+
+
+
+<!-- 列表查询-->
+<list>
+<![CDATA[
+select u.id as pk,
+       u.dept_name,
+       u.pid,
+      u.remark,
+      u.create_date,
+      u2.user_id as create_userid,
+      u.create_username,
+      u.modify_date,
+      u3.user_id as modify_userid 
+from t_s_dept u
+left join t_s_user u2 on (u2.id=u.create_userid and u2.state='1')
+left join t_s_user u3 on (u3.id=u.modify_userid and u3.state='1')
+where u.state='1'
+  ##replace##
+
+]]>
+</list>
+
+<!-- 列表查询-->
+<showFormData>
+<![CDATA[
+select u.id as pk,
+	   u.pid,
+       u.dept_name,
+       u.remark
+from t_s_dept u
+where u.state='1' 
+
+]]>
+</showFormData>
+
+
+</root>

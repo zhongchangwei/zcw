@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+<!-- 角色列表tree查询-->
+<treeListToRole>
+<![CDATA[
+select c.id as pk,
+       c.ROLE_NAME,
+       c.DESCRIPTION as text
+from T_S_ROLE c
+where c.state='1'
+order by c.CREATE_DATE
+]]>
+</treeListToRole>
+
+<!-- 列表查询			-->
+<list>
+<![CDATA[
+select          
+	        t.id as pk,
+	        t.role_name,
+	        t.description,
+	        t.create_date,
+	        t.create_userid,
+	        t.create_user,
+	        t.modify_date,
+	        t.modify_userid,
+	        t.state
+
+from t_s_role t
+where t.state='1' 
+##replace##
+
+]]>
+</list>
+
+
+<!-- 修改回显				-->
+<formShowData>
+<![CDATA[
+select 			       
+	        t.id as pk,
+	        t.role_name,
+	        t.description,
+	        t.create_date,
+	        t.create_userid,
+	        t.create_user,
+	        t.modify_date,
+	        t.modify_userid,
+	        t.state
+
+from t_s_role t
+where t.state='1'
+
+]]>
+</formShowData>
+
+
+
+</root>

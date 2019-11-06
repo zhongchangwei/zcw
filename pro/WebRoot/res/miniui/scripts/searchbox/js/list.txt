@@ -1,0 +1,20 @@
+﻿[
+	{id: "1", name: "方案1", user: "AAA", time: "2010-11-12 12:20:30", 
+		data: [
+			{ logic: "and", operator: "等于", value: "1", name: '日期',  field: 'birthday', type: 'date', value: "2010-11-22", value2: "2012-10-20", table: 'a', fastQuery: true, queryArgs: true, defaultVal: "", notNull: true, defOperator: "等于" },
+			{ logic: "and", operator: "等于", value: "1", name: '字符串', field: 'name', type: 'string', value: "abc", table: 'a', fastQuery: true, queryArgs: true, defaultVal: "", notNull: true, defOperator: "等于" },
+			{ logic: "and", operator: "不等于", value: "1", name: '数字', field: 'age', type: 'number', table: 'b', fastQuery: false, queryArgs: true, defaultVal: "", notNull: true, defOperator: "大于" },
+			{ logic: "or", operator: "介于", value: "1", value2: "2", name: '日期', field: 'birthday', type: 'date', table: 'c', fastQuery: false, queryArgs: true, defaultVal: "", notNull: true, defOperator: "介于" },
+			{ logic: "and", operator: "不介于", value: "3", value2: "4", name: '日期小时', field: 'createtime', type: 'datetime', value: "2010-11-22", value2: "2012-10-20", table: 'd', fastQuery: true, queryArgs: true, defaultVal: "", notNull: true, defOperator: "介于" },
+			{ logic: "or", operator: "包含", value: "1", name: '选择', field: 'country', type: 'select', value: "cn", table: 'e', fastQuery: false, queryArgs: true, defaultVal: '[{ "id": "usa", "text": "美国" },{ "id": "cn", "text": "中国" }]', notNull: true, defOperator: "等于" }
+		]
+	},
+	{id: "2", name: "方案2", user: "BBB", time: "2010-11-12 12:20:30", 
+		data: [
+			{ logic: "and", operator: "等于", value: "1", name: '字符串', field: 'name', type: 'string', table: 'a', fastQuery: true, queryArgs: true, defaultVal: "", notNull: true, defOperator: "等于" },
+			{ logic: "and", operator: "不等于", value: "1", name: '数字', field: 'age', type: 'number', table: 'b', fastQuery: false, queryArgs: true, defaultVal: "", notNull: true, defOperator: "大于" },
+			{ logic: "or", operator: "介于", value: "1", value2: "2", name: '日期', field: 'birthday', type: 'date', table: 'c', fastQuery: false, queryArgs: true, defaultVal: "", notNull: true, defOperator: "介于" }
+		]	
+	}
+
+]

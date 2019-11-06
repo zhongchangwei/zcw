@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+
+
+<!-- 列表查询-->
+<list>
+<![CDATA[
+select 			       u.id as pk,
+                       u.user_id,
+                       u.password,
+				       d.dept_name as dept_id,
+				       r.role_name as role_id,
+                       u.real_name,
+                       decode(u. age,'1','男','女') as age,
+                       u.phone,
+                       u.msisdn,
+                       u.addresses,
+                       u.email,
+                       u.city,
+                       u.province,
+                       u.country,
+                       u.password_hint,
+                       u.account_enabled,
+                       u.account_expired,
+                       u.account_locked,
+                       u.password_error_times,
+                       u.last_login_time,
+                       u.password_error_lock,
+                       u.rtx_num,
+                       u.remark,
+                       u.state,
+                       u.create_date,
+                       u2.create_userid,
+                       u.create_username,
+                       u.modify_date,
+                       u3.modify_userid
+from t_s_user u
+left join t_s_role r on (r.id=u.role_id and r.state='1')
+left join t_s_dept d on (d.id=u.dept_id and d.state='1')
+left join t_s_user u2 on (u2.id=u.create_userid and u2.state='1')
+left join t_s_user u3 on (u3.id=u.modify_userid and u3.state='1')
+where u.state='1'
+  ##replace##
+
+]]>
+</list>
+
+
+<!-- 修改回显-->
+<showFormData>
+<![CDATA[
+select 			       u.id as pk,
+                       u.user_id,
+                       u.password,
+				       u.dept_id,
+				       u.role_id,
+                       u.real_name,
+                       u.age,
+                       u.phone,
+                       u.msisdn,
+                       u.addresses,
+                       u.email,
+                       u.city,
+                       u.province,
+                       u.country,
+                       u.password_hint,
+                       u.account_enabled,
+                       u.account_expired,
+                       u.account_locked,
+                       u.password_error_times,
+                       u.last_login_time,
+                       u.password_error_lock,
+                       u.rtx_num,
+                       u.remark,
+                       u.state,
+                       u.create_date,
+                       u2.create_userid,
+                       u.create_username,
+                       u.modify_date,
+                       u3.modify_userid
+from t_s_user u
+left join t_s_role r on (r.id=u.role_id and r.state='1')
+left join t_s_dept d on (d.id=u.dept_id and d.state='1')
+left join t_s_user u2 on (u2.id=u.create_userid and u2.state='1')
+left join t_s_user u3 on (u3.id=u.modify_userid and u3.state='1')
+where u.state='1' and u.id = '#id'
+
+]]>
+</showFormData>
+
+
+</root>

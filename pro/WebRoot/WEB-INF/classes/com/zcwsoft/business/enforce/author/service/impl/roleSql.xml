@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+
+
+<!-- 2.列表查询-->
+<list>
+<![CDATA[
+select u.id as pk,
+       u.role_name,
+      u. remark,
+      u. create_date,
+      u2.user_name as create_userid,
+      u. create_user,
+      u. update_date,
+      u3.user_name as update_userid 
+from t_s_role u
+left join t_s_user u2 on (u2.id=u.create_userid and u2.state='1')
+left join t_s_user u3 on (u3.id=u.update_userid and u3.state='1')
+where u.state='1'
+  ##replace##
+
+]]>
+</list>
+
+
+</root>

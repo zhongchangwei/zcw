@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+
+
+<!-- 2.列表查询-->
+<list>
+<![CDATA[
+select c.id as pk,
+       i.name_ as parName,
+       c.PID,
+       c.NAME_ as codename,
+       c.isfolder,
+       c.TYPE,
+       c.SORT,
+       c.url_,
+       c.REMARK,
+       c.SYS_FLAG,
+       c.STATE,
+       c.CREATE_DATE,
+       c.CREATE_USER_NAME,
+       c.modify_date,
+       c.modify_user
+from t_s_menu c
+left join t_s_menu i on (i.state='1' and i.id=c.pid)
+where c.state='1'
+  ##replace##
+
+]]>
+</list>
+
+<!-- 修改回显-->
+<showFormData>
+<![CDATA[
+select 		 c.id as pk,
+             c.pid,
+             c.name_,
+             c.isfolder,
+             c.type,
+             c.sort,
+             c.url_,
+             c.sys_flag,
+             c.create_date,
+             c.create_user,
+             c.create_user_name,
+             c.modify_date,
+             c.modify_user,
+             c.modify_user_name,
+             c.modify_type,
+             c.state,
+             c.remark
+from t_s_menu c
+where c.state='1' and c.id='#id'
+
+]]>
+</showFormData>
+
+</root>

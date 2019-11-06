@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+
+
+<!-- 列表查询-->
+<list>
+<![CDATA[
+select 			        
+						t.tablename as pk,
+						t.tablename,
+						min(t.create_date) as create_date
+from t_base_field t
+where t.state='1'
+group by 				
+						t.tablename
+  ##replace##
+
+]]>
+</list>
+
+
+<!-- 修改回显-->
+<formShowData>
+<![CDATA[
+select 			        t.id as pk,
+						t.tablename,
+						t.field,
+						t.tname,
+						t.width,
+						t.dateformat,
+						t.datatype,
+						t.ishidden,
+						t.sort,
+						t.create_date,
+						t.create_userid,
+						t.remark,
+						t.state
+from t_base_field t
+where t.state='1'
+
+]]>
+</formShowData>
+
+<!-- grid回显-->
+<grid1ShowData>
+<![CDATA[
+select 			        t.id as pk,
+						t.tablename,
+						t.field,
+						t.tname,
+						t.width,
+						t.dateformat,
+						t.datatype,
+						t.ishidden,
+						t.sort,
+						t.create_date,
+						t.create_userid,
+						t.remark,
+						t.state
+from t_base_field t
+where t.state='1' and t.field is not null
+##replace##
+
+]]>
+</grid1ShowData>
+
+<!-- 获取最大排序根据表名-->
+<getMaxSortByTabName>
+<![CDATA[
+select 	
+						max(t.sort)
+from t_base_field t
+where t.state='1' and t.tablename = '#tablename'
+
+]]>
+</getMaxSortByTabName>
+
+
+</root>

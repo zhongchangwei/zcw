@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+
+<!-- 部门列表tree查询-->
+<treeList>
+<![CDATA[
+select u.id as pk,
+	   u.pid as pid,
+       u.dept_name as text,
+       u. remark
+from t_s_dept u
+where u.state='1'
+
+]]>
+</treeList>
+
+<!-- 菜单列表tree查询-->
+<treeListToCodeMenu>
+<![CDATA[
+select c.id as pk,
+       c.PID,
+       c.NAME_ as text,
+       c.isfolder,
+       c.TYPE,
+       c.SORT,
+       c.url_,
+       c.REMARK,
+       c.SYS_FLAG
+from t_code_info c
+where c.state='1'
+order by c.sort
+]]>
+</treeListToCodeMenu>
+
+
+
+
+<!-- 获取菜单_-->
+<getCodeMenu>
+<![CDATA[
+	select  
+		id,
+		name_ as name
+	from t_code_info where state = '1' and isfolder = '1'
+
+]]>
+</getCodeMenu>
+
+
+<!-- 获取部门-->
+<getDept>
+<![CDATA[
+	select  
+		id,
+		pid,
+		dept_name as name
+	from t_s_dept where state = '1'
+
+]]>
+</getDept>
+
+<!-- 获取地市-->
+<getCity>
+<![CDATA[
+	select  
+		id,
+		pid,
+		dept_name as name
+	from t_s_dept where state = '1'
+
+]]>
+</getCity>
+
+<!-- 当前用户拥有的表 -->
+<getUserTable>
+<![CDATA[
+	select 
+			Lower(table_name) as pk,
+			Lower(table_name) as name
+	from user_tables
+
+]]>
+</getUserTable>
+
+
+
+</root>

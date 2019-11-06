@@ -1,0 +1,56 @@
+﻿.fc-logic
+{
+    width:50px;
+}
+.fc-fields
+{
+    width:150px;
+    margin-right:5px;    
+    font-weight:bold;
+}
+.fc-operator
+{
+    width:70px;
+    margin-right:5px;
+}
+.fc-value
+{
+    width:150px;border:solid 1px #aaa;
+    margin-right:5px;
+}
+
+.fc-before, .fc-after, .fc-add, .fc-btn
+{
+    border:solid 1px #555;
+    background:white;
+}
+
+
+
+.fc-table td
+{
+    text-align:center;
+   
+}
+
+
+.fc-td-logic
+{
+    width:40px;
+}
+.fc-td-field
+{
+    width:120px;
+}
+.fc-td-operator
+{
+    width:40px;
+}
+.fc-td-value
+{
+    width:150px;
+}
+.fc-td-action
+{
+    width:50px;
+}

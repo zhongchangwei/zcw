@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+
+
+<!-- 列表查询-->
+<list>
+<![CDATA[
+select              
+            t.id as pk,
+            t.tablename,
+            t.field,
+            t.tname,
+            t.width,
+            t.dateformat,
+            t.datatype,
+            t.ishidden,
+            t.sort,
+            t.create_date,
+            t.create_userid,
+            t.remark,
+            t.state,
+            t.islist,
+            t.isblank,
+            t.pk_tablename,
+            t.outputpath,
+            t.packagename,
+            t.beanname,
+            t.modify_date,
+            t.modify_userid
+from t_base_field t
+where t.state='1' and t.islist = '1'
+
+
+]]>
+</list>
+
+
+<!-- 修改回显-->
+<formShowData>
+<![CDATA[
+select 			       
+			t.id as pk,
+			t.tablename,
+            t.field,
+            t.tname,
+            t.width,
+            t.dateformat,
+            t.datatype,
+            t.ishidden,
+            t.sort,
+            t.remark,
+            t.state,
+            t.islist,
+            t.isblank,
+            t.pk_tablename,
+            t.outputpath,
+            t.packagename,
+            t.beanname
+from t_base_field t
+where t.state='1'
+
+]]>
+</formShowData>
+
+<!-- grid回显-->
+<grid1ShowData>
+<![CDATA[
+select 			        t.id as pk,
+						t.tablename,
+						t.field,
+						t.tname,
+						t.width,
+						t.dateformat,
+						t.datatype,
+						t.ishidden,
+						t.sort,
+						t.isblank,
+						t.remark,
+						t.state
+from t_base_field t
+where t.state='1' and t.islist = '0'
+##replace##
+
+]]>
+</grid1ShowData>
+
+<!-- 获取最大排序根据表名-->
+<getMaxSortByTabName>
+<![CDATA[
+select 	
+						max(t.sort)
+from t_base_field t
+where t.state='1' and t.tablename = '#tablename'
+
+]]>
+</getMaxSortByTabName>
+
+<!-- 获取所有字段根据表名-->
+<getTableFieldByTableName>
+<![CDATA[
+select    
+		  '' as pk,
+		  f.column_name as field,
+		  f.data_type as fieldType,
+     	  c.comments as tName,
+		  '50px' as WIDTH,
+		  'yes' as ISBLANK,
+		  'text' as DATATYPE,
+		  '1' as ISHIDDEN,
+		  f.column_id as sort
+from user_tab_columns f
+left join user_col_comments c on(c.table_name =f.table_name) 
+where 1=1 and f.column_name = c.column_name
+##replace##
+
+]]>
+</getTableFieldByTableName>
+
+<!-- 获取所有字段根据表名2-->
+<getTableFieldByTableName2>
+<![CDATA[
+
+
+select 
+      c.owner,
+      decode(f.COLUMN_NAME, p.pk, p.pk, null) as pry,
+      f.DATA_DEFAULT as defaultvalue,
+      t.comments as biaozhushi,
+      f.column_name as pk,
+      f.column_name as field,
+      f.data_type as fieldType,
+      f.DATA_LENGTH as DLENFTH,
+      f.NULLABLE,
+      f.column_id,
+      c.comments as tName
+  from user_tab_columns f
+  left join all_col_comments c on (c.table_name = f.table_name)
+  left join user_tab_comments t on (t.table_name = f.TABLE_NAME)
+  left join (select  col.table_name, col.column_name as pk,con.constraint_type
+               from user_constraints con, user_cons_columns col
+              where con.constraint_name = col.constraint_name
+                and (con.constraint_type = 'P' or con.constraint_type = 'U') ) p on (p.table_name =f.TABLE_NAME )
+ where 1 = 1
+   and f.column_name = c.column_name
+   #replace#
+   order by f.column_id asc
+
+]]>
+</getTableFieldByTableName2>
+
+
+
+
+<!-- 当前用户拥有的表 ，排除已有-->
+<getUserTable>
+<![CDATA[
+	select 
+			Lower(u.table_name) as pk,
+			Lower(u.table_name) as name
+	from user_tables u
+	where 1=1 and Lower(u.table_name) not in(
+									select 
+										Lower(tablename) 
+									from t_base_field
+									where state='1' and islist='1'
+									)
+
+]]>
+</getUserTable>
+
+
+</root>

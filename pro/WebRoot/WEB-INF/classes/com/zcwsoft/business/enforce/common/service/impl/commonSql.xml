@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+
+
+<!-- 获取部门-->
+<getDept>
+<![CDATA[
+	select  
+		id,
+		pid,
+		dept_name as name
+	from t_s_dept where state = '1'
+
+]]>
+</getDept>
+<!-- 获取部门-->
+<getCity>
+<![CDATA[
+	select  
+		id,
+		pid,
+		dept_name as name
+	from t_s_dept where state = '1'
+
+]]>
+</getCity>
+
+
+
+</root>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+
+
+<!-- 列表查询			-->
+<list>
+<![CDATA[
+select          
+${tfield}
+from ${tableName} t
+where t.state='1' 
+##replace##
+
+]]>
+</list>
+
+
+<!-- 修改回显				-->
+<formShowData>
+<![CDATA[
+select 			       
+${tfield}
+from ${tableName} t
+where t.state='1'
+
+]]>
+</formShowData>
+
+<#if (flag = "is")>		
+<!-- grid回显                                           -->
+<grid1ShowData>
+<![CDATA[
+	select          
+${tfield1}
+	from ${tableName1} t
+	where t.state='1' 
+	##replace##
+
+]]>
+</grid1ShowData>
+</#if>
+
+<#if (flag2 = "is")>		
+<!-- grid2回显			-->
+<grid2ShowData>
+<![CDATA[
+
+	select          
+${tfield2}
+	from ${tableName2} t
+	where t.state='1' 
+	##replace##
+
+]]>
+</grid2ShowData>
+</#if>
+
+</root>
